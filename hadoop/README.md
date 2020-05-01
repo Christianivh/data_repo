@@ -52,4 +52,33 @@ Ejecutar comnando para actualizar variables de entorno:
 
 ```
 source ~/.bashrc
+
+mkdir -p /home/osboxes/hadoop_store/hdfs/namenode
+mkdir -p /home/osboxes/hadoop_store/hdfs/datanode
+
+```
+
+
+```
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/core-site.xml
+
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/hdfs-site.xml
+
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/mapred-site.xml
+
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/yarn-site.xml
+
+
+```
+
+copiar al directorio de hadoop
+```
+cp core-site.xml /home/osboxes/hadoop/etc/hadoop/core-site.xml
+
+cp hdfs-site.xml /home/osboxes/hadoop/etc/hadoop/hdfs-site.xml
+
+cp mapred-site.xml /home/osboxes/hadoop/etc/hadoop/mapred-site.xml
+
+cp yarn-site.xml /home/osboxes/hadoop/etc/hadoop/yarn-site.xml
+
 ```
