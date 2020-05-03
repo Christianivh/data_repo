@@ -44,14 +44,14 @@ echo "" >> ~/.bashrc
 echo "#HADOOP VARIABLES START" >> ~/.bashrc
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/.bashrc
 echo "export HADOOP_HOME=/home/osboxes/hadoop" >> ~/.bashrc
-echo "export PATH=$PATH:$HADOOP_HOME/bin" >> ~/.bashrc
-echo "export PATH=$PATH:$HADOOP_HOME/sbin" >> ~/.bashrc
-echo "export HADOOP_MAPRED_HOME=$HADOOP_HOME" >> ~/.bashrc
-echo "export HADOOP_COMMON_HOME=$HADOOP_HOME" >> ~/.bashrc
-echo "export HADOOP_HDFS_HOME=$HADOOP_HOME" >> ~/.bashrc
-echo "export HADOOP_YARN_HOME=$HADOOP_HOME" >> ~/.bashrc
-echo "export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native" >> ~/.bashrc
-echo "export HADOOP_OPTS=\"-Djava.library.path=$HADOOP_HOME/lib/native\"" >> ~/.bashrc
+echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> ~/.bashrc
+echo "export PATH=\$PATH:\$HADOOP_HOME/sbin" >> ~/.bashrc
+echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> ~/.bashrc
+echo "export HADOOP_COMMON_HOME=\$HADOOP_HOME" >> ~/.bashrc
+echo "export HADOOP_HDFS_HOME=\$HADOOP_HOME" >> ~/.bashrc
+echo "export HADOOP_YARN_HOME=\$HADOOP_HOME" >> ~/.bashrc
+echo "export HADOOP_COMMON_LIB_NATIVE_DIR=\$HADOOP_HOME/lib/native" >> ~/.bashrc
+echo "export HADOOP_OPTS=\"-Djava.library.path=\$HADOOP_HOME/lib/native\"" >> ~/.bashrc
 echo "#HADOOP VARIABLES END" >> ~/.bashrc
 echo "" >> ~/.bashrc
 
@@ -59,6 +59,8 @@ echo "##############################################"
 echo "Step 7: refresh bashrc environment "
 echo "##############################################"
 source ~/.bashrc
+mkdir -p ~/hadoop_store/hdfs/namenode
+mkdir -p ~/hadoop_store/hdfs/datanode
 
 echo "##############################################"
 echo "Step 8: Config file in hadoop"
@@ -80,7 +82,7 @@ echo "##############################################"
 echo "Step 9: format HDFS "
 echo "##############################################"
 cd hadoop
-hdfs namenode –format
+~/hadoop/sbin/hdfs namenode –format
 
 echo "##############################################"
 echo "Step 10: start  daemons {HDFS, YARN, HISTORY} "
