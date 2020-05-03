@@ -55,7 +55,12 @@ echo "#HADOOP VARIABLES END" >> ~/.bashrc
 echo "" >> ~/.bashrc
 
 echo "##############################################"
-echo "Step 7: Config file in hadoop"
+echo "Step 7: refresh bashrc environment "
+echo "##############################################"
+source ~/.bashrc
+
+echo "##############################################"
+echo "Step 8: Config file in hadoop"
 echo "##############################################"
 #download files
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/core-site.xml
@@ -68,4 +73,16 @@ cp hdfs-site.xml /home/osboxes/hadoop/etc/hadoop/hdfs-site.xml
 cp mapred-site.xml /home/osboxes/hadoop/etc/hadoop/mapred-site.xml
 cp yarn-site.xml /home/osboxes/hadoop/etc/hadoop/yarn-site.xml
 # alter hadoop environment file
-echo "  export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/hadoop/etc/hadoop/hadoop-env.sh
+echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/hadoop/etc/hadoop/hadoop-env.sh
+
+echo "##############################################"
+echo "Step 9: format HDFS "
+echo "##############################################"
+cd hadoop
+hdfs namenode –format
+
+echo "##############################################"
+echo "Step 10: start  daemons {HDFS, YARN, HISTORY} "
+echo "##############################################"
+~/hadoop/sbin/start-all.sh
+~/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
