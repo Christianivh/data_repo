@@ -84,6 +84,9 @@ echo ""
 echo "################### alter hadoop environment file ###########################"
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/hadoop/etc/hadoop/hadoop-env.sh
 
+exec bash
+
+
 echo "##############################################"
 echo "Step 9: format HDFS "
 echo "##############################################"
