@@ -65,24 +65,30 @@ mkdir -p ~/hadoop_store/hdfs/datanode
 echo "##############################################"
 echo "Step 8: Config file in hadoop"
 echo "##############################################"
-#download files
+echo ""
+echo "################### download files xml  ###########################"
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/core-site.xml
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/hdfs-site.xml
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/mapred-site.xml
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/yarn-site.xml
-# copy to hadoop download files
+echo ""
+echo "################### copy to hadoop download files ###########################"
 cp core-site.xml /home/osboxes/hadoop/etc/hadoop/core-site.xml
 cp hdfs-site.xml /home/osboxes/hadoop/etc/hadoop/hdfs-site.xml
 cp mapred-site.xml /home/osboxes/hadoop/etc/hadoop/mapred-site.xml
 cp yarn-site.xml /home/osboxes/hadoop/etc/hadoop/yarn-site.xml
-# alter hadoop environment file
+echo ""
+echo "################### remove temporal files ###########################"
+rm core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml
+echo ""
+echo "################### alter hadoop environment file ###########################"
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/hadoop/etc/hadoop/hadoop-env.sh
 
 echo "##############################################"
 echo "Step 9: format HDFS "
 echo "##############################################"
 cd hadoop
-~/hadoop/sbin/hdfs namenode –format
+hdfs namenode –format
 
 echo "##############################################"
 echo "Step 10: start  daemons {HDFS, YARN, HISTORY} "
