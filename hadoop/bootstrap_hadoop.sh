@@ -1,4 +1,19 @@
 #!/bin/bash
+echo "##############################################"
+echo "Step 0: Install aplications librarys"
+echo "##############################################"
+echo ""
+echo "################### SSH  ###########################"
+sudo apt-get install -y ssh
+echo ""
+echo "################### RSYNC  ###########################"
+sudo apt-get install -y rsync
+echo ""
+echo "################### JDK  ###########################"
+sudo apt-get install -y openjdk-8-jdk
+echo ""
+echo "################### JRE  ###########################"
+sudo apt-get install -y openjdk-8-jre
 
 echo "##############################################"
 echo "Step 1: Download hadoop dsitributed 3.2.1 file"
@@ -15,20 +30,6 @@ echo "Step 3: rename directory"
 echo "##############################################"
 mv hadoop-3.2.1 hadoop
 rm hadoop-3.2.1.tar.gz
-
-echo "##############################################"
-echo "Step 4: Install java complementary librarys"
-echo "##############################################"
-sudo apt-get install -y ssh
-sudo apt-get install -y rsync
-sudo apt-get install -y openjdk-8-jdk
-sudo apt-get install -y openjdk-8-jre
-
-echo "##############################################"
-echo "Step 5: Generate the key rsa "
-echo "##############################################"
-ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 
 echo "##############################################"
 echo "Step 5: Generate the key rsa "
