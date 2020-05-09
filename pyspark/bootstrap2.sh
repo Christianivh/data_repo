@@ -23,6 +23,22 @@ sudo apt-get install -y awscli
 echo ""
 echo "################### SCLA  ###########################"
 sudo apt-get install -y scala
+echo ""
+echo "################### python3  ###########################"
+sudo apt-get install -y python3.7
+echo ""
+echo "################### python3-pip  ###########################"
+sudo apt-get install -y python3-pip
+echo ""
+echo "################### python3-pip  ###########################"
+sudo apt-get install -y python3-dev
+echo ""
+echo "################### ipython ###########################"
+sudo apt-get install -y ipython
+echo ""
+echo "################### jupyter ###########################"
+sudo apt-get install -y jupyter
+
 
 echo "##############################################"
 echo "Step 5: Generate the key rsa "
@@ -53,6 +69,21 @@ echo "##############################################"
 echo "Step 3: rename directory"
 echo "##############################################"
 mv spark-2.4.5-bin-hadoop2.7 spark
-rm spark-3.0.0-preview2-bin-hadoop2.7.tgz
+rm spark-2.4.5-bin-hadoop2.7.tgz
+
+echo "##############################################"
+echo "Step 6: Add PYSPARK environment variable in bashrc "
+echo "##############################################"
+echo "#PYSPARK VARIABLES START" >> ~/.bashrc
+echo "export PYTHONPATH=\$SPARK_HOME/python:\$PYTHONPATH" >> ~/.bashrc
+echo "export PYSPARK_DRIVER_PYTHON=jupyter" >> ~/.bashrc
+echo "export PYSPARK_DRIVER_PYTHON_OPTS=notebook" >> ~/.bashrc
+echo "export PYSPARK_PYTHON=python3" >> ~/.bashrc
+echo "#PYSPARK VARIABLES END" >> ~/.bashrc
+echo "" >> ~/.bashrc
+
+echo ""
+echo "################### pyspark  ###########################"
+sudo pip3 install py4j
 
 exec bash
