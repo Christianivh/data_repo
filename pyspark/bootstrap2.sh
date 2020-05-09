@@ -74,6 +74,7 @@ rm spark-2.4.5-bin-hadoop2.7.tgz
 echo "##############################################"
 echo "Step 6: Add PYSPARK environment variable in bashrc "
 echo "##############################################"
+
 echo "#PYSPARK VARIABLES START" >> ~/.bashrc
 echo "export PYTHONPATH=\$SPARK_HOME/python:\$PYTHONPATH" >> ~/.bashrc
 echo "export PYSPARK_DRIVER_PYTHON=jupyter" >> ~/.bashrc
