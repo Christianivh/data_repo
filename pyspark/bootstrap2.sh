@@ -86,4 +86,12 @@ echo ""
 echo "################### pyspark  ###########################"
 sudo pip3 install py4j
 
+mkdir workspace
+
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/pyspark/GetStart.ipynb
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/pyspark/username.csv
+
+mv GetStart.ipynb workspace/GetStart.ipynb
+mv username.csv workspace/username.csv
+
 exec bash
