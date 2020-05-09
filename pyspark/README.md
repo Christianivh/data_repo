@@ -26,8 +26,6 @@ bash boostrap.sh
 Una vez finalizada la instalación, cree una carpeta de trabajo, he ingrese ha Jupyter Notebook
 
 ```
-mkdir workspace
-
 cd workspace
 
 pyspark
