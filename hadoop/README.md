@@ -18,7 +18,7 @@ Esta es un archivo bootstrap, el cual trae la instalación y configuración de:
 ```
 sudo apt-get install wget
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/bootstrap1.sh -O boostrap.sh
-bash boostrap.sh
+bash boostrap.sh "$(whoami)"
 
 ```
 

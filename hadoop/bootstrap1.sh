@@ -14,6 +14,24 @@ sudo apt-get install -y openjdk-8-jdk
 echo ""
 echo "################### JRE  ###########################"
 sudo apt-get install -y openjdk-8-jre
+echo ""
+echo "################### python3  ###########################"
+sudo apt-get install -y python3.7
+echo ""
+echo "################### python3-pip  ###########################"
+sudo apt-get install -y python3-pip
+echo ""
+echo "################### python3-pip  ###########################"
+sudo apt-get install -y python3-dev
+echo ""
+echo "################### ipython ###########################"
+sudo apt-get install -y ipython
+echo ""
+echo "################### GIT  ###########################"
+sudo apt-get install -y git
+echo ""
+echo "################### AWSCLI  ###########################"
+sudo apt-get install -y awscli
 
 echo "##############################################"
 echo "Step 1: Download hadoop dsitributed 3.2.1 file"
@@ -43,7 +61,7 @@ echo "##############################################"
 echo "" >> ~/.bashrc
 echo "#HADOOP VARIABLES START" >> ~/.bashrc
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/.bashrc
-echo "export HADOOP_HOME=/home/osboxes/hadoop" >> ~/.bashrc
+echo "export HADOOP_HOME=/home/$1/hadoop" >> ~/.bashrc
 echo "export PATH=\$PATH:\$HADOOP_HOME/bin" >> ~/.bashrc
 echo "export PATH=\$PATH:\$HADOOP_HOME/sbin" >> ~/.bashrc
 echo "export HADOOP_MAPRED_HOME=\$HADOOP_HOME" >> ~/.bashrc
@@ -73,10 +91,10 @@ wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/conf
 wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/config_files/yarn-site.xml
 echo ""
 echo "################### copy to hadoop download files ###########################"
-cp core-site.xml /home/osboxes/hadoop/etc/hadoop/core-site.xml
-cp hdfs-site.xml /home/osboxes/hadoop/etc/hadoop/hdfs-site.xml
-cp mapred-site.xml /home/osboxes/hadoop/etc/hadoop/mapred-site.xml
-cp yarn-site.xml /home/osboxes/hadoop/etc/hadoop/yarn-site.xml
+cp core-site.xml ~/hadoop/etc/hadoop/core-site.xml
+cp hdfs-site.xml ~/hadoop/etc/hadoop/hdfs-site.xml
+cp mapred-site.xml ~/hadoop/etc/hadoop/mapred-site.xml
+cp yarn-site.xml ~/hadoop/etc/hadoop/yarn-site.xml
 echo ""
 echo "################### remove temporal files ###########################"
 rm core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml
@@ -85,16 +103,3 @@ echo "################### alter hadoop environment file ########################
 echo "export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> ~/hadoop/etc/hadoop/hadoop-env.sh
 
 exec bash
-
-
-echo "##############################################"
-echo "Step 9: format HDFS "
-echo "##############################################"
-cd hadoop
-hdfs namenode –format
-
-echo "##############################################"
-echo "Step 10: start  daemons {HDFS, YARN, HISTORY} "
-echo "##############################################"
-~/hadoop/sbin/start-all.sh
-~/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
