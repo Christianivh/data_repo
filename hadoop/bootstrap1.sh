@@ -18,18 +18,18 @@ sudo apt-get install -y openjdk-8-jre
 echo "##############################################"
 echo "Step 1: Download hadoop dsitributed 3.2.1 file"
 echo "##############################################"
-wget https://archive.apache.org/dist/hadoop/common/hadoop-3.2.1/hadoop-3.2.1.tar.gz
+wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar.gz
 
 echo "##############################################"
 echo "Step 2: Decompress hadoop file"
 echo "##############################################"
-tar xfz hadoop-3.2.1.tar.gz
+tar xfz hadoop-3.1.2.tar.gz
 
 echo "##############################################"
 echo "Step 3: rename directory"
 echo "##############################################"
-mv hadoop-3.2.1 hadoop
-rm hadoop-3.2.1.tar.gz
+mv hadoop-3.1.2 hadoop
+rm hadoop-3.1.2.tar.gz
 
 echo "##############################################"
 echo "Step 5: Generate the key rsa "
