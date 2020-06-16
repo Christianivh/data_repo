@@ -38,9 +38,9 @@ hdfs namenode –format
 Proceda a iniciar los servicios de HDFS / YARN /
 
 ```{shell}
-~/hadoop/sbin/start-all.sh
+sbin/start-all.sh
 
-~/hadoop/sbin/mr-jobhistory-daemon.sh start historyserver
+sbin/mr-jobhistory-daemon.sh start historyserver
 ```
 
 copyright!
