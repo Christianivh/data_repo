@@ -3,6 +3,7 @@ echo "##############################################"
 echo "Step 0: Install aplications librarys"
 echo "##############################################"
 echo ""
+sudo apt-get update
 echo "################### SSH  ###########################"
 sudo apt-get install -y ssh
 echo ""
