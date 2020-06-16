@@ -81,6 +81,7 @@ source ~/.bashrc
 mkdir -p ~/hadoop_store/hdfs/namenode
 mkdir -p ~/hadoop_store/hdfs/datanode
 
+
 echo "##############################################"
 echo "Step 8: Config file in hadoop"
 echo "##############################################"
@@ -96,6 +97,9 @@ cp core-site.xml ~/hadoop/etc/hadoop/core-site.xml
 cp hdfs-site.xml ~/hadoop/etc/hadoop/hdfs-site.xml
 cp mapred-site.xml ~/hadoop/etc/hadoop/mapred-site.xml
 cp yarn-site.xml ~/hadoop/etc/hadoop/yarn-site.xml
+
+sed -i "s/osboxes/$1/" ~/hadoop/etc/hadoop/hdfs-site.xml
+
 echo ""
 echo "################### remove temporal files ###########################"
 rm core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml
