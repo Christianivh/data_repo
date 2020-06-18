@@ -27,6 +27,8 @@ bash boostrap.sh "$(whoami)"
 Una vez finalizada la instalación de hadoop, proceda a formatear
 
 ```{shell}
+source ~/.bashrc
+
 cd hadoop
 
 hdfs namenode –format
