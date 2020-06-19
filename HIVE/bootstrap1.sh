@@ -41,7 +41,7 @@ wget https://archive.apache.org/dist/hadoop/common/hadoop-3.1.2/hadoop-3.1.2.tar
 wget http://apache.rediris.es/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
 
 echo "##############################################"
-echo "Step 2: Decompress hadoop file"
+echo "Step 2: Decompress hadoop / hive files"
 echo "##############################################"
 tar xfz hadoop-3.1.2.tar.gz
 tar xfz apache-hive-3.1.2-bin.tar.gz

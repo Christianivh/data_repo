@@ -18,7 +18,7 @@ Esta es un archivo bootstrap, el cual trae la instalación y configuración de:
 
 ```
 sudo apt-get install wget
-wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hive/bootstrap1.sh -O boostrap.sh
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/HIVE/bootstrap1.sh -O boostrap.sh
 bash boostrap.sh "$(whoami)"
 
 ```
@@ -56,6 +56,9 @@ hdfs dfs -mkdir /user
 hdfs dfs -mkdir /user/hive/
 hdfs dfs -mkdir /user/hive/warehouse
 
+hdfs dfs -chmod g+w /tmp
+hdfs dfs -chmod g+w /user/hive/warehouse
+
 ```
 
 
@@ -63,7 +66,11 @@ hdfs dfs -mkdir /user/hive/warehouse
 Proceda a iniciar los servicios del schema de hive
 
 ```{shell}
+cd ~/hive
+
 schematool -dbType derby -initSchema
+
+hive
 ```
 
 copyright!
