@@ -32,3 +32,18 @@ ROW FORMAT DELIMITED
 FIELDS TERMINATED BY ','
 STORED AS TEXTFILE
 location '/user/hive/data_movies';
+
+
+
+
+create external table maquinarias2 ( tiempo string, tipo  string, tiporeceta string )
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.RegexSerDe'
+WITH SERDEPROPERTIES ("input.regex" = "(.{8})(.{2})(.{31}).*" )
+LOCATION '/user/hive/datamq';
+
+
+create external table maquinarias ( tiempo string, tipo  string, tiporeceta string )
+PARTITIONED BY (fecha string)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.RegexSerDe'
+WITH SERDEPROPERTIES ("input.regex" = "(.{8})(.{2})(.{31}).*" )
+LOCATION '/user/hive/maquinarias/maquinarias/';
