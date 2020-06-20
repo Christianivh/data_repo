@@ -47,3 +47,6 @@ PARTITIONED BY (fecha string)
 ROW FORMAT SERDE 'org.apache.hadoop.hive.contrib.serde2.RegexSerDe'
 WITH SERDEPROPERTIES ("input.regex" = "(.{8})(.{2})(.{31}).*" )
 LOCATION '/user/hive/maquinarias/maquinarias/';
+
+
+msck repair table maquinarias;
