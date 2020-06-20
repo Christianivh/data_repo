@@ -107,6 +107,7 @@ cp mapred-site.xml ~/hadoop/etc/hadoop/mapred-site.xml
 cp yarn-site.xml ~/hadoop/etc/hadoop/yarn-site.xml
 
 sed -i "s/osboxes/$1/" ~/hadoop/etc/hadoop/hdfs-site.xml
+sed -i "s/osboxes/$1/" ~/hadoop/etc/hadoop/core-site.xml
 
 echo ""
 echo "################### remove temporal files ###########################"
