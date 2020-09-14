@@ -25,7 +25,7 @@ echo "################### SCLA  ###########################"
 sudo apt-get install -y scala
 echo ""
 echo "################### python3  ###########################"
-sudo apt-get install -y python3.7
+sudo apt-get install -y python3.8.3
 echo ""
 echo "################### python3-pip  ###########################"
 sudo apt-get install -y python3-pip
@@ -58,18 +58,18 @@ echo "" >> ~/.bashrc
 echo "##############################################"
 echo "Step 10: download spark"
 echo "##############################################"
-wget https://downloads.apache.org/spark/spark-2.4.5/spark-2.4.5-bin-hadoop2.7.tgz
+wget https://downloads.apache.org/spark/spark-2.4.7/spark-2.4.7-bin-hadoop2.7.tgz
 
 echo "##############################################"
 echo "Step 11: Decompress hadoop file"
 echo "##############################################"
-tar xfz spark-2.4.5-bin-hadoop2.7.tgz
+tar xfz spark-2.4.7-bin-hadoop2.7.tgz
 
 echo "##############################################"
 echo "Step 3: rename directory"
 echo "##############################################"
-mv spark-2.4.5-bin-hadoop2.7 spark
-rm spark-2.4.5-bin-hadoop2.7.tgz
+mv spark-2.4.7-bin-hadoop2.7 spark
+rm spark-2.4.7-bin-hadoop2.7.tgz
 
 echo "##############################################"
 echo "Step 6: Add PYSPARK environment variable in bashrc "
