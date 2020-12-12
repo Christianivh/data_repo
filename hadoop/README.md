@@ -22,6 +22,13 @@ wget https://raw.githubusercontent.com/Christianivh/data_repo/master/hadoop/boot
 bash boostrap.sh "$(whoami)"
 
 ```
+## Reiniciar maquina Virtual
+Ingresar el siguiente comando para reiniciar la maquina virtual
+
+```
+reboot
+```
+
 
 ## Inicio Hadoop
 
