@@ -100,6 +100,7 @@ hive -e "LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/empleados4' INTO TAB
 
 hive -e "select nombre from empleados4 where salario > 20000 and salario < 30000;"
 
+select * from empleados4 where 'jesus sanchez' in subordinados;
 
 
 

@@ -1,0 +1,53 @@
+
+
+cd /home/osboxes/ejemplosHive
+
+wget https://pkgstore.datahub.io/core/nasdaq-listings/nasdaqlisted_csv/data/7665719fb51081ba0bd834fde71ce822/nasdaq-listed_csv.csv
+
+
+CREATE TABLE nasdaq_listed
+(
+symbol STRING,
+company_name STRING,
+security_name STRING,
+market_category STRING,
+test_issue STRING,
+financial_status STRING,
+round_lot_size INT
+)
+ROW FORMAT SERDE 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+WITH SERDEPROPERTIES (
+ "separatorChar" = ",",
+ "quoteChar" = "\""
+)
+tblproperties("skip.header.line.count"="1");
+
+
+LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/nasdaq_listed_csv.csv' INTO TABLE nasdaq_listed;
+
+SELECT nasdaq_listed.* FROM nasdaq_listed limit 10;
+
+SELECT financial_status, count(1) FROM nasdaq_listed group by financial_status;
+
+
+
+mkdir -p /home/osboxes/ejemplosHive/udf/com/ejemplo/hive/udf
+
+wget https://raw.githubusercontent.com/Christianivh/data_repo/master/HIVE/Lower.java
+
+mv Lower.java /home/osboxes/ejemplosHive/udf/com/ejemplo/hive/udf/Lower.java
+
+cd /home/osboxes/ejemplosHive/udf/
+
+sudo javac -classpath $HADOOP_HOME/share/hadoop/common/hadoopcommon-3.1.2.jar:$HIVE_HOME/lib/hive-exec-3.1.2.jar com/ejemplo/hive/udf/Lower.java 
+
+sudo jar cf /home/osboxes/ejemplosHive/udf/Lower.jar com/ejemplo/hive/udf/*.class
+
+
+
+
+add jar /home/osboxes/ejemplosHive/udf/Lower.jar;
+
+CREATE TABLE ejemploLower(cadena String);
+
+INSERT INTO ejemploLower(cadena) values ('CADENA1'),('Cadena2');
