@@ -99,3 +99,33 @@ jesus sanchez, 20000,,IRPF:.2#SEG SOC:.05,Calle Arenal 3#Madrid#Madrid#28001
 hive -e "LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/empleados4' INTO TABLE empleados4;"
 
 hive -e "select nombre from empleados4 where salario > 20000 and salario < 30000;"
+
+
+
+
+
+sudo nano /home/osboxes/ejemplosHive/comments.txt
+
+{ "idBlog" : "75584", "date" : "2019-12-20", "user" : "user1", "comment" : "me gusta el blog", "contact" : { "email" : "user1@gmail.com", "tlfn" : "91 661 12 33" } }
+{ "idBlog" : "75584", "date" : "2019-12-21", "user" : "user2", "comment" : "otro comentario en el mismo blog", "contact" : { "email" : "user2@gmail.com" } }
+{ "idBlog" : "75585", "date" : "2019-12-20", "user" : "user1", "comment" : "no me gusta el blog", "contact" : { "email" : "user1@gmail.com", "tlfn" : "91 661 12 33" } }
+{ "idBlog" : "75585", "date" : "2019-12-22", "user" : "user3", "comment" : "comentario en el otro blog" }
+
+
+
+CREATE EXTERNAL TABLE comments(info STRING);
+
+LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/comments.txt' OVERWRITE INTO TABLE comments;
+
+select * from comments;
+
+select idBlog from comments;
+
+SELECT GET_JSON_OBJECT(comments.info,'$.idBlog') FROM comments;
+
+SELECT GET_JSON_OBJECT(c.info,'$.contact.email') FROM comments c;
+
+SELECT b.idBlog, c.email FROM comments a 
+LATERAL VIEW json_tuple(a.info, 'idBlog', 'contact') b AS idBlog, contact 
+LATERAL VIEW json_tuple(b.contact, 'email', 'tlfn')c AS email, tlfn WHERE b.idBlog='75584';
+
