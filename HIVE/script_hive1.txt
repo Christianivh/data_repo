@@ -1,0 +1,101 @@
+
+create table empleados1
+( nombre STRING,
+salario FLOAT
+)ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+sudo nano /home/osboxes/ejemplosHive/empleados1
+
+juan perez, 30000
+maria jimenez,25000
+jesus sanchez, 20000
+
+
+hive -e "LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/empleados1' INTO TABLE empleados1;"
+
+hive -e "select nombre from empleados1;"
+
+create table empleados2 (
+nombre STRING,
+salario FLOAT,
+subordinados ARRAY<STRING>
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY '#'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+sudo nano /home/osboxes/ejemplosHive/empleados2
+
+
+juan perez, 30000, maria jimenez#jesus sanchez
+maria jimenez, 25000, jesus sanchez
+jesus sanchez, 20000
+
+hive -e "LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/empleados2' INTO TABLE empleados2;"
+
+
+hive -e "select nombre, subordinados from empleados2";
+
+
+create table empleados3 (
+nombre STRING,
+salario FLOAT,
+subordinados ARRAY<STRING>,
+deducciones MAP<STRING,
+FLOAT>
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY '#'
+MAP KEYS TERMINATED BY ':'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+
+sudo nano /home/osboxes/ejemplosHive/empleados3
+
+
+juan perez, 30000,maria jimenez#jesus sanchez,IRPF:.25#SEG SOC:.05
+maria jimenez, 25000,jesus sanchez,IRPF:.2#SEG SOC:.05
+jesus sanchez, 20000,,IRPF:.22#SEG SOC:.05
+
+hive -e "LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/empleados3' INTO TABLE empleados3";
+
+hive -e "select nombre from empleados3 where salario > 20000;"
+
+
+hive -e "select nombre, deducciones from empleados3";
+
+create table empleados4 (
+nombre STRING,
+salario FLOAT,
+subordinados ARRAY<STRING>,
+deducciones MAP<STRING, FLOAT>,
+direccion STRUCT<calle:STRING, ciudad:STRING, comunidad:STRING, codpostal:INT>
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ','
+COLLECTION ITEMS TERMINATED BY '#'
+MAP KEYS TERMINATED BY ':'
+LINES TERMINATED BY '\n'
+STORED AS TEXTFILE;
+
+
+sudo nano /home/osboxes/ejemplosHive/empleados4
+
+
+juan perez, 30000,maria jimenez#jesus sanchez,IRPF:.25#SEG SOC:.05,GranVia#Madrid#Madrid#28001
+maria jimenez, 25000,jesus sanchez,IRPF:.2#SEG SOC:.05,Calle Mayor12#Alpedrete#Madrid#28512
+jesus sanchez, 20000,,IRPF:.2#SEG SOC:.05,Calle Arenal 3#Madrid#Madrid#28001
+
+hive -e "LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/empleados4' INTO TABLE empleados4;"
+
+hive -e "select nombre from empleados4 where salario > 20000 and salario < 30000;"
