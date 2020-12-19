@@ -39,7 +39,7 @@ mv Lower.java /home/osboxes/ejemplosHive/udf/com/ejemplo/hive/udf/Lower.java
 
 cd /home/osboxes/ejemplosHive/udf/
 
-sudo javac -classpath $HADOOP_HOME/share/hadoop/common/hadoopcommon-3.1.2.jar:$HIVE_HOME/lib/hive-exec-3.1.2.jar com/ejemplo/hive/udf/Lower.java 
+sudo javac -classpath $HADOOP_HOME/share/hadoop/common/hadoop-common-3.1.2.jar:$HIVE_HOME/lib/hive-exec-3.1.2.jar com/ejemplo/hive/udf/Lower.java 
 
 sudo jar cf /home/osboxes/ejemplosHive/udf/Lower.jar com/ejemplo/hive/udf/*.class
 
