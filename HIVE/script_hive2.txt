@@ -23,7 +23,7 @@ WITH SERDEPROPERTIES (
 tblproperties("skip.header.line.count"="1");
 
 
-LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/nasdaq_listed_csv.csv' INTO TABLE nasdaq_listed;
+LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/nasdaq-listed_csv.csv' INTO TABLE nasdaq_listed;
 
 SELECT nasdaq_listed.* FROM nasdaq_listed limit 10;
 
