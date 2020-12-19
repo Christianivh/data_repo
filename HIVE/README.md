@@ -71,6 +71,32 @@ cd ~/hive
 schematool -dbType derby -initSchema
 
 hive
+
+```
+
+## Configuración Manual
+
+Instalar HIVE:
+```{shell}
+
+wget http://apache.rediris.es/hive/hive-3.1.2/apache-hive-3.1.2-bin.tar.gz
+tar -xvf apache-hive-3.1.2-bin.tar.gz
+mv apache-hive-3.1.2-bin hive
+
+```
+
+Configurar variables de entorno:
+
+```{shell}
+nano ~/.bashrc
+
+# HIVE VARIABLES START
+export HIVE_HOME=/home/osboxes/hive
+export PATH=$PATH:$HIVE_HOME/bin
+# HIVE VARIABLES END
+
+source ~/.bashrc
+
 ```
 
 copyright!
