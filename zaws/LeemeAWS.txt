@@ -81,4 +81,18 @@ yum install logstash-1.4.2-1_2c0f5a1.noarch.rpm -y
 
 wget https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-1.4.2-1_2c0f5a1.noarch.rpm
 
+sudo yum update -y
 
+sudo amazon-linux-extras install docker
+
+sudo usermod -a -G docker ec2-user
+
+reboot
+
+sudo service docker start
+
+docker info
+
+# docker pull apache/nifi
+
+docker run --name nifi -p 8080:8080 -d apache/nifi:latest
