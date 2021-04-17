@@ -2,7 +2,7 @@
 
 cd /home/osboxes/ejemplosHive
 
-wget https://pkgstore.datahub.io/core/nasdaq-listings/nasdaq-listed_csv/data/7665719fb51081ba0bd834fde71ce822/nasdaq-listed_csv.csv
+wget https://pkgstore.datahub.io/core/nasdaq-listings/nasdaqlisted_csv/data/7665719fb51081ba0bd834fde71ce822/nasdaq-listed_csv.csv
 
 
 CREATE TABLE nasdaq_listed
@@ -23,7 +23,7 @@ WITH SERDEPROPERTIES (
 tblproperties("skip.header.line.count"="1");
 
 
-LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/nasdaq-listed_csv.csv' INTO TABLE nasdaq_listed;
+LOAD DATA LOCAL INPATH '/home/osboxes/ejemplosHive/nasdaq_listed_csv.csv' INTO TABLE nasdaq_listed;
 
 SELECT nasdaq_listed.* FROM nasdaq_listed limit 10;
 
@@ -39,7 +39,7 @@ mv Lower.java /home/osboxes/ejemplosHive/udf/com/ejemplo/hive/udf/Lower.java
 
 cd /home/osboxes/ejemplosHive/udf/
 
-sudo javac -classpath $HADOOP_HOME/share/hadoop/common/hadoop-common-3.1.2.jar:$HIVE_HOME/lib/hive-exec-3.1.2.jar com/ejemplo/hive/udf/Lower.java 
+sudo javac -classpath $HADOOP_HOME/share/hadoop/common/hadoopcommon-3.1.2.jar:$HIVE_HOME/lib/hive-exec-3.1.2.jar com/ejemplo/hive/udf/Lower.java 
 
 sudo jar cf /home/osboxes/ejemplosHive/udf/Lower.jar com/ejemplo/hive/udf/*.class
 
@@ -51,3 +51,7 @@ add jar /home/osboxes/ejemplosHive/udf/Lower.jar;
 CREATE TABLE ejemploLower(cadena String);
 
 INSERT INTO ejemploLower(cadena) values ('CADENA1'),('Cadena2');
+
+create temporary function my_lower as 'com.ejemplo.hive.udf.Lower';
+
+select my_lower(cadena), cadena from ejemploLower;
