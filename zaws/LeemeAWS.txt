@@ -1,0 +1,84 @@
+
+1. la llave pem debe tener el permiso 400.
+2. el usuario debe ser ec2-user por default
+3. usuarios por defecto usrtrain usrapp
+4. Contraseña por defecto Belcorp2018
+
+
+# 1. la llave pem debe tener el permiso 400.
+# 2. el usuario debe ser ec2-user por default
+ssh -i chvasquez.pem ec2-user@54.167.80.65
+
+#Agregando un usuario por ejemplo: usrtrain
+sudo useradd usrtrain
+sudo useradd usrjupyter
+sudo useradd chvasquez
+
+#Establecer un usrtrain
+sudo passwd usrtrain
+sudo passwd usrjupyter
+sudo passwd christianivh
+sudo passwd chvasquez
+
+# pasarse al usuario root:
+sudo -s
+
+# cambiar configuración para que pueda ingresar con password
+vim /etc/ssh/sshd_config
+  #En la aplicación de VIM cambiar el parametro:
+  PasswordAuthentication yes
+  #Tip: Para grabar en vim utilizar el comando ESC y :  a continuación wq
+
+# cambiar configuración para que pueda ingresar con password MEJORADA
+sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
+
+
+#Establecer que el usuario usrtrain pueda ejecutar sudo 
+echo 'usrtrain ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+echo 'usrjupyter ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+echo 'chvasquez ALL=(ALL) NOPASSWD: ALL' >> /etc/sudoers
+
+/*
+For docker SUDO error: 
+"docker: Got permission denied while trying to connect to the Docker daemon socket at unix:///var/run/docker.sock: Post http://%2Fvar%2Frun%2Fdocker.sock/v1.26/containers/create: dial unix /var/run/docker.sock: connect: permission denied.
+See 'docker run --help'."
+Use:   sudo usermod -a -G docker $USER
+*/
+
+sudo yum update
+
+sudo yum install java-1.8.0
+
+python --version
+sudo yum install python36
+python3 --version
+
+<< REBOOT >>
+
+pip3 -version
+
+
+# MINICONDA
+# pasarse al usuario root:
+sudo -s
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh 
+bash Miniconda3-latest-Linux-x86_64.sh 
+
+
+sudo yum install postgresql postgresql-contrib postgresql-server-dev-all
+sudo -u postgres psql
+
+
+
+cd /root
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.4.4.noarch.rpm
+yum install logstash-1.4.2-1_2c0f5a1.noarch.rpm -y
+
+
+<acces>
+<secret>
+
+wget https://download.elasticsearch.org/logstash/logstash/packages/centos/logstash-1.4.2-1_2c0f5a1.noarch.rpm
+
+
