@@ -1,11 +1,14 @@
 
 # SPARK WITH DOCKER
 
+img[alt=drawing] { width: 200px; }
+
+
 En este tutorial veremos como levantar una maquina de Spark en contenedores Docker. 
 
 Levantaremos en una maquina virtual (Virtual Box con Ubuntu), un cluster de spark, el cual estara compuesto por un master y 2 nodos.
 
-![docker](imagen/spark_docker.png)
+![docker](imagen/spark_docker.png =200x)
 
 Requerimientos para conseguir el procedimiento existosamente. 
 
@@ -47,7 +50,7 @@ Procedimiento:
 
    Agregar un usuario, como admin grupo docker, paso opcional. 
    ```
-   sudo usermod -aG docker    
+   sudo usermod -aG docker <USER> 
    ```
 
    La guia se ha basado en la [Web1](https://linuxconfig.org/how-to-install-docker-on-ubuntu-20-04-lts-focal-fossa "Configurar Docker"), [Web2](https://docs.docker.com/engine/install/ubuntu/ "Docker oficial")
@@ -68,11 +71,13 @@ Procedimiento:
    
 5. Levantar containers:
 
+   Iniciar container:
    ```
    sudo docker run -it --rm --memory 2Gb --cpus 1 ubuntu
-
-   apt update && apt install -y openjdk-8-jdk python nano net-tools
    ```
+   configurar contendor
+   ```
+   apt update && apt install -y openjdk-8-jdk python nano 
 
 6. Configurar Spark en containers:
    Desde el entorno principal.
@@ -84,11 +89,17 @@ Procedimiento:
 7. Levantar Spark en containers:
 
    Conocer la ip del container
+   instalar net tools, que trae la aplicación ifconfig. 
+   instalar:  
+   ```
+   apt install net-tools
+   ```
+   invocar la aplicación
    ```
    ifconfig
    ```
 
-   Master
+   Master:
    ```   
    cd opt/spark-3.1.2-bin-hadoop3.2/
    
