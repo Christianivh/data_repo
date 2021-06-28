@@ -1,7 +1,18 @@
 
 # SPARK WITH DOCKER
 
-Vamos a levantar Spark en una instancia nueva de Ubuntu.
+En este tutorial veremos como levantar una maquina de Spark en contenedores Docker. 
+
+Levantaremos en una maquina virtual (Virtual Box con Ubuntu), un cluster de spark, el cual estara compuesto por un master y 2 nodos.
+
+Requerimientos para conseguir el procedimiento existosamente. 
+
+- Windows 10 o mayor.
+- 8Gb de memoria o mayor.
+- Hipervirtualización activado.
+- tener instalado VirtualBox.
+
+Procedimiento:
 
 1. Imagen de Ubuntu <br> 
    1.1 Descargar ubuntu 20.04  <br>
