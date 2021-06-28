@@ -22,8 +22,9 @@ Procedimiento:
    Descarga la imagen ubuntu desde la pagina de osboxes, 
    [Descargar AQUI](https://www.osboxes.org/ubuntu/#ubuntu-20-04-vbox "Imagen OSBOXES Descargar") Ubuntu 20.04, desde la pestaña de virtual box. En la pestaña de info encontraremos la contraseña de la imagen.
    <br>
-   ![docker](imagen/ubuntu20_04.png)
 
+   <img src="imagen/ubuntu20_04.png" alt="drawing" style="width:200px;"/>   !
+   
    1.2 levantarlo en VirtualBox  <br>
    Crear una nueva maquina virtual, configurarla para que tome al menos 6GB.
 
