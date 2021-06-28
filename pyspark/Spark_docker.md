@@ -8,7 +8,8 @@ En este tutorial veremos como levantar una maquina de Spark en contenedores Dock
 
 Levantaremos en una maquina virtual (Virtual Box con Ubuntu), un cluster de spark, el cual estara compuesto por un master y 2 nodos.
 
-![docker](imagen/spark_docker.png =200x)
+<img src="imagen/spark_docker.png" alt="drawing" style="width:200px;"/>
+
 
 Requerimientos para conseguir el procedimiento existosamente. 
 
