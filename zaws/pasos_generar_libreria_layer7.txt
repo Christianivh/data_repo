@@ -1,0 +1,74 @@
+
+
+
+curl https://r5jed29n57.execute-api.us-east-1.amazonaws.com/covid-stage-api/lambda-covid-clase202104 -d {\"country\":\"Peru\",\"date\":\"2021-04-22\"}
+
+
+python3 -m venv C:\temp\mlibrary\python
+
+virtualenv -p C:\temp\mlibrary\python  mlib
+
+C:\Users\chris\AppData\Roaming\Python\Python38\Scripts\virtualenv.exe  --python C:\Users\chris\AppData\Roaming\Python\Python38 venv
+
+
+py -m venv <FOLDER_NAME>
+py -m venv python
+python -m venv python
+
+
+
+.\<FOLDER_NAME>\Scripts\activate
+.\python\Scripts\activate
+
+
+
+source python/bin/activate
+
+
+
+python
+
+sudo yum -y install gcc
+sudo yum install python-devel
+------------
+
+py -m pip install pandas==1.2.1
+py -m pip install numpy
+
+
+Ubuntu:
+sudo apt-get update
+sudo apt-get install python3
+sudo apt-get install python3-venv
+sudo apt install zip
+
+
+
+
+
+python3 -m venv <FOLDER>
+
+python3 -m venv python
+cd <FOLDER>
+source python/bin/activate
+python3 -m pip install pandas==1.2.1
+python3 -m pip install fsspec==2021.4.0
+python3 -m pip install s3fs==2021.4.0
+python3 -m pip install mysql-connector-python==8.0.26
+deactivate
+
+
+%userprofile%\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\
+
+C:\Users\chris\AppData\Local\Packages\CanonicalGroupLimited.Ubuntu20.04onWindows_79rhkp1fndgsc\LocalState\rootfs\home\chris
+
+
+
+python3 -m venv psycopg
+cd psycopg
+source psycopg/bin/activate
+python3 -m pip install psycopg2-binary==2.9.1
+sudo apt-get install python3-psycopg2
+deactivate
+
+
