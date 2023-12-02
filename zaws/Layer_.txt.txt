@@ -1,0 +1,21 @@
+
+# Creating an AWS Lambda Layer
+
+##Step 1: 
+Download the library onto your local environment
+For my project, I needed the pymysql library, so I entered the following command:
+
+```
+pip install -t ./python pymysql
+```
+
+##Step 2: 
+Zip the "python" folder
+```
+zip -r pymysql.zip python
+```
+
+##Step 3 (Optional): 
+Move the file into an S3 bucket
+aws s3 mv pymysql.zip s3://paks-bucket
+AWS recommends this S3 step for files larger than 10 MB.
