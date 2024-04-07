@@ -30,9 +30,9 @@ curl localhost:80
 
 test another own page
 ```
-echo "Class 2021 - Post elecciones" > /var/www/html/index.html
+echo "Class BPC 2024 - Post elecciones" > /var/www/html/index.html
 
-echo "Class 2021 From $(hostname -f)" > /var/www/html/index.html
+echo "Class BPC 2024 From $(hostname -f)" > /var/www/html/index.html
 ```
 
 
