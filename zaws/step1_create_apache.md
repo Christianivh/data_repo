@@ -39,12 +39,12 @@ echo "Class 2021 From $(hostname -f)" > /var/www/html/index.html
 
 ## Second step - USER DATA
 ```
-#!/bin/bash|
-sudo yum update -y
-sudo yum install -y http.x86_64
+#!/bin/bash
+yum update -y
+yum install -y httpd
 sudo systemctl start httpd.service
 sudo systemctl enable httpd.service
-sudo echo "hello world from $(hostname -f)" > /var/www/html/index.html
+sudo echo "BPC from $(hostname -f)" > /var/www/html/index.html
 
 ```
 
